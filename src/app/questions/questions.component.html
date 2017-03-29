@@ -1,0 +1,27 @@
+<section class="main">
+    <h1>Questions</h1>
+    <div id="question-content" #questionContent>
+        <div class="row"
+             *ngFor="let question of questions; let i=index"
+             (click)="openModal(question.question_id)" [class.odd]="i%2!=1" [class.even]="i%2==1">
+        <div class="title">{{question.title| html}}</div>
+        <div class="author">{{question.owner.display_name|html}}</div>
+        <div class="creation-date">{{question.creation_date*1000|date}}</div>
+    </div>
+    </div>
+    <modal *ngIf="modalIsOpen" #modal
+           [width]="'800'" [height]="'800'"
+           (afterClose)="afterClose()">
+        <div modal-header id="modal-header">
+            <h2>{{title | html}}</h2>
+        </div>
+        <div modal-body>
+            <div id="modal-body">
+                <div id="question-body" #questionBody></div>
+                <div id="btn-wrapper">
+                    <a id="view-more" href="{{link}}" target="_blank">go to stackoverflow</a>
+                </div>
+            </div>
+        </div>
+    </modal>
+</section>

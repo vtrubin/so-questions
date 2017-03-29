@@ -1,0 +1,9 @@
+<section [class.visible]="isVisible" #win [style.width.px]="width" [style.height.px]="height">
+    <header>
+        <ng-content select="[modal-header]"></ng-content>
+    </header>
+    <ng-content select="[modal-body]"></ng-content>
+    <div id="close">
+        <i (click)="closeModal()" class="fa fa-times" aria-hidden="true"></i>
+    </div>
+</section>
